@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Teacher extends Person {
     private ArrayList<Course> coursesTeaching = new ArrayList<>();
     private  ArrayList<Teacher> teachers=new ArrayList<>();
+    Course newCourse=new Course();
 
     public void setCoursesTeaching(ArrayList<Course> coursesTeaching) {
         this.coursesTeaching = coursesTeaching;
@@ -51,8 +52,9 @@ public class Teacher extends Person {
             System.out.println("Enter course ID:");
             String courseId = sc.nextLine();
             aCourse.setCourseId(courseId);
+//            aCourse.assignaTeacher(aTeacher);
             cour.add(aCourse);
-            System.out.println("Any other courses for this teacher (Yes/No)");
+            System.out.println("Any other courses for " + aTeacher.getFirstName()+ " " +aTeacher.getLastName()+" (Yes/No)");
             anyOtherCourses = sc.nextLine();
             count++;
         } while (anyOtherCourses.equalsIgnoreCase("yes"));

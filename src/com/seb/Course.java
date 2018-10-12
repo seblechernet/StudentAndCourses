@@ -9,8 +9,25 @@ public class Course {
     private String courseId;
     private String courseName;
     private ArrayList<Course> courses = new ArrayList<>();
+//    private ArrayList<Student> whoTakes=new ArrayList<Student>();
+//    private ArrayList<Teacher> whoGives=new ArrayList<Teacher>();
 
-
+//    public void assignaStudent(Student aStudent){
+//        whoTakes.add(aStudent);
+//
+//    }
+//    public void assignaTeacher(Teacher aTeacher){
+//        whoGives.add(aTeacher);
+//
+//    }
+//    public ArrayList<Student> getWhoTakes() {
+//        return whoTakes;
+//    }
+//
+//
+//    public ArrayList<Teacher> getWhoGives() {
+//        return whoGives;
+//    }
     public Course() {
     }
 
@@ -38,6 +55,9 @@ public class Course {
         this.courses = courses;
     }
 
+
+
+
     public void add() {
         String anyOther = "";
         do {
@@ -55,5 +75,6 @@ public class Course {
         } while (anyOther.equalsIgnoreCase("yes"));
 
     }
+
 }
 
