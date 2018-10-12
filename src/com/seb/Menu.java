@@ -1,5 +1,7 @@
 package com.seb;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -12,7 +14,7 @@ public class Menu {
 
         String exit="";
         do {
-            System.out.println("Choose what you want to do \n1. Add a student\n2.Add a teacher\n3.Add a course\n4.List of courses\n5.List of Students\n6.List of Teachers\n7.Exit");
+            System.out.println("\nChoose what you want to do \n1. Add a student\n2.Add a teacher\n3.Add a course\n4.List of courses\n5.List of Students\n6.List of Teachers\n7.Exit");
             String choice = sc.nextLine();
             switch (choice) {
                 case "1": {
@@ -61,23 +63,34 @@ public class Menu {
     }
 
     public void listOfTeachers(){
-
-        newTeacher.listOfTeachers();
+        System.out.println("***Teachers***");
+        for (Teacher eachTeacher:newTeacher.getTeachers()){
+            System.out.println("\nID number: " + eachTeacher.getIdNumber() + "\nFirst Name: " + eachTeacher.getFirstName()+ "\nLast Name: "+
+                    eachTeacher.getLastName());
+            System.out.print("Teaches :");
+            for (Course eachCourse:eachTeacher.getCoursesTeaching()){
+                System.out.print(eachCourse.getCourseName()+",");
+            }
+        }
     }
     public void listOfStudents(){
-
+        System.out.println("***Students***");
         for (Student eachStudent:newStudent.getStudents()){
-            System.out.println("ID number: " + eachStudent.getIdNumber() + "\nFirst Name: " + eachStudent.getFirstName()+ "\nLast Name: "+
+            System.out.println("\nID number: " + eachStudent.getIdNumber() + "\nFirst Name: " + eachStudent.getFirstName()+ "\nLast Name: "+
                     eachStudent.getLastName());
+            System.out.print("Takes :");
+            for (Course eachCourse:eachStudent.getCoursesTaking()){
+                System.out.print(eachCourse.getCourseName()+",");
+            }
         }
-        System.out.println("Takes :");
 
-        for (Course eachCourse:newStudent.getCoursesTaking()){
-            System.out.print(eachCourse.getCourseName()+",");
-        }
 
     }
     public void listOfCourses(){
+        System.out.println("***Courses***");
+        for(Course eachCourse:newCourse.getCourses()){
+            System.out.println("Course Name:" + eachCourse.getCourseName()+"\nCourse ID:" + eachCourse.getCourseId());
+        }
 
     }
 }

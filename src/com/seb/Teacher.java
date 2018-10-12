@@ -6,11 +6,27 @@ public class Teacher extends Person {
     private ArrayList<Course> coursesTeaching = new ArrayList<>();
     private  ArrayList<Teacher> teachers=new ArrayList<>();
 
+    public void setCoursesTeaching(ArrayList<Course> coursesTeaching) {
+        this.coursesTeaching = coursesTeaching;
+    }
+
+    public ArrayList<Course> getCoursesTeaching() {
+        return coursesTeaching;
+    }
+
+    public ArrayList<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(ArrayList<Teacher> teachers) {
+        this.teachers = teachers;
+    }
 
     public void add(){
         String anyother="";
     do {
         Teacher aTeacher = new Teacher();
+        ArrayList<Course> cour=new ArrayList<>();
         System.out.println("Enter first name of the teacher:");
         String firstName = sc.nextLine();
         aTeacher.setFirstName(firstName);
@@ -23,16 +39,10 @@ public class Teacher extends Person {
         System.out.println("Enter Email of the teacher:");
         String email = sc.nextLine();
         aTeacher.setEmail(email);
-        teachers.add(aTeacher);
-        aTeacher.teaches();
-        System.out.println("Do you have any other teachers?(yes/no)");
-        anyother=sc.nextLine();
-    }while(anyother.equalsIgnoreCase("yes"));
-    }
-    public ArrayList<Course> teaches() {
+
         System.out.println("Enter the courses that the teacher teaches");
         int count = 1;
-        String anyOther = "";
+        String anyOtherCourses = "";
         do {
             Course aCourse = new Course();
             System.out.println("Enter course " + count + ".");
@@ -41,25 +51,20 @@ public class Teacher extends Person {
             System.out.println("Enter course ID:");
             String courseId = sc.nextLine();
             aCourse.setCourseId(courseId);
-            coursesTeaching.add(aCourse);
-            System.out.println("Any other courses (Yes/No)");
-            anyOther = sc.nextLine();
+            cour.add(aCourse);
+            System.out.println("Any other courses for this teacher (Yes/No)");
+            anyOtherCourses = sc.nextLine();
             count++;
-        } while (anyOther.equalsIgnoreCase("yes"));
+        } while (anyOtherCourses.equalsIgnoreCase("yes"));
 
-        return coursesTeaching;
+        System.out.println("Any other teachers?(yes/no)");
+        anyother=sc.nextLine();
+        aTeacher.setCoursesTeaching(cour);
+        teachers.add(aTeacher);
+    }while(anyother.equalsIgnoreCase("yes"));
     }
-    public void listOfTeachers(){
-        System.out.println("Teachers:");
-        for (Teacher eachTeacher:teachers){
-            System.out.println("ID number: " + eachTeacher.getIdNumber() + "\nFirst Name: " + eachTeacher.getFirstName()+ "\nLast Name: "+
-                                 eachTeacher.getLastName());
-        }
-        System.out.print("Teaches");
-        for (Course eachCourse:teaches()){
-            System.out.print(eachCourse.getCourseName());
-        }
 
 
-    }
+
+
 }

@@ -3,8 +3,8 @@ package com.seb;
 import java.util.ArrayList;
 
 public class Student extends Person {
-    ArrayList<Course> coursesTaking = new ArrayList<Course>();
-    ArrayList<Student> students = new ArrayList<Student>();
+   ArrayList<Course> coursesTaking = new ArrayList<Course>();
+   ArrayList<Student> students = new ArrayList<Student>();
 
 
     public void setCoursesTaking(ArrayList<Course> coursesTaking) {
@@ -25,10 +25,11 @@ public class Student extends Person {
 
 
     public void add() {
+
         String anyOther = "";
         do {
-
-            Student aStudent = new Student();
+           Student aStudent = new Student();
+            ArrayList<Course> cour=new ArrayList<>();
             System.out.println("Enter first name of the student:");
             String firstName = sc.nextLine();
             aStudent.setFirstName(firstName);
@@ -41,7 +42,7 @@ public class Student extends Person {
             System.out.println("Enter Email of the student:");
             String email = sc.nextLine();
             aStudent.setEmail(email);
-            students.add(aStudent);
+
             System.out.println("Enter the courses that the student takes");
             int count = 1;
             String anyOtherCourse = "";
@@ -53,15 +54,21 @@ public class Student extends Person {
                 System.out.println("Enter course ID:");
                 String courseId = sc.nextLine();
                 aCourse.setCourseId(courseId);
-                coursesTaking.add(aCourse);
-                System.out.println("Any other courses (Yes/No)");
-                anyOther = sc.nextLine();
+                cour.add(aCourse);
+                System.out.println("Any other courses for this student(Yes/No)");
+                anyOtherCourse = sc.nextLine();
                 count++;
             } while (anyOtherCourse.equalsIgnoreCase("yes"));
             System.out.println("Any Other Students?(yes/no");
             anyOther = sc.nextLine();
+
+            aStudent.setCoursesTaking(cour);
+            students.add(aStudent);
         } while (anyOther.equalsIgnoreCase("yes"));
+
+
     }
+
 
 
 
